@@ -1,5 +1,7 @@
 `Cloudflared Tunnels`是Cloudflare提供的`内网穿透`工具，可安全地将`公网流量`转发到内部网络服务。通过加密隧道连接全球网络，它提供安全性和性能优化，方便访问内部服务。
 
+>部署环境: windows10
+
 ### 一: 下载程序
 
 将`cloudflared-windows-amd64.exe` 重命名为将`cloudflared.exe`
@@ -21,3 +23,6 @@ https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-w
 然后双击 `menu.bat` 开启你的穿透之旅吧
 
 
+
+
+<br>
