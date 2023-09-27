@@ -1,8 +1,8 @@
 @echo off
 setlocal enabledelayedexpansion
 
-:: 步骤 1: 进入.cloudflared目录
-cd C:\Users\%USERNAME%\.cloudflared
+:: 步骤 4: 以管理员身份打开 CMD 并转到 C:\Cloudflared\bin
+powershell -command "Start-Process cmd -ArgumentList '/c cd /d C:\Cloudflared\bin' -Verb RunAs"
 
 :: 步骤 2: 列出隧道并提取名称
 echo 隧道名称

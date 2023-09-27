@@ -1,8 +1,10 @@
 @echo off
 setlocal enabledelayedexpansion
 
-:: 步骤 1: 进入.cloudflared目录
-cd C:\Users\%USERNAME%\.cloudflared
+
+
+:: 步骤 4: 以管理员身份打开 CMD 并转到 C:\Cloudflared\bin
+powershell -command "Start-Process cmd -ArgumentList '/c cd /d C:\Cloudflared\bin' -Verb RunAs"
 
 :: 步骤 2: 列出隧道并提取名称
 echo 隧道名称
@@ -32,8 +34,13 @@ set /p DeleteTunnel=是否删除隧道 "%TunnelName%"？（输入Y或N）:
 if /i "%DeleteTunnel%"=="Y" (
     cloudflared tunnel delete "%TunnelName%"
     echo 隧道 "%TunnelName%" 已删除。
+    
+    :: 步骤 6: 删除相关的.json和.yml文件
+del "C:\Users\%USERNAME%\.cloudflared\%TunnelName%.json" /f /q
+del "C:\Users\%USERNAME%\.cloudflared\%TunnelName%.yml" /f /q
+echo 隧道文件 "%TunnelName%.json" 和 "%TunnelName%.yml" 已删除。
 ) else (
-    echo 取消删除隧道 "%TunnelName%"
+echo 取消删除隧道 "%TunnelName%"
 )
 
 :: 结束
